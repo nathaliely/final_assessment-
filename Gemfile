@@ -59,3 +59,12 @@ gem 'bcrypt', '~> 3.1.7'
 #Omniauth and Omniauth-Facebook gems
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+
+#search
+gem 'ransack'
+
+#simpleform
+gem 'simple_form', '~> 3.4'
+
+#boostrap-sass
+gem 'boostrap-sass', '~> 0.0.2'

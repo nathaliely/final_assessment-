@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :items
+
+  root'items#index'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
