@@ -69,3 +69,10 @@ gem 'simple_form', '~> 3.4'
 
 #boostrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
+
+#photo
+gem 'carrierwave'
+gem 'cloudinary'
+
+gem 'trollop'
+gem 'google-api-client'

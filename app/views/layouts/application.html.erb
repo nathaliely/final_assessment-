@@ -22,6 +22,7 @@
       <%= link_to "Checklist", root_path, class: "navbar_brand" %>
       <div id="user_header">
         <% if user_signed_in? %>
+        <%= link_to "user show", user_path(current_user) %>
           <%= link_to 'Logout', logout_path %>
         <% else %>
           <%= link_to "Sign Up", signup_path %>

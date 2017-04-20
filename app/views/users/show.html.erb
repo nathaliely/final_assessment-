@@ -1,1 +1,21 @@
 <p><%= @user.email %></p>
+<% if @user.avatar.standard.url != nil %>
+  <%= image_tag @user.avatar.standard.url %>
+<% end %>
+
+<div class="youtube">
+          <!-- <div class="item active"> -->
+            <!-- <div class="row" id="carousel-row"> -->
+             <% if @search_results %>
+              <% @search_results.each do |result| %>
+                <% case result.id.kind %>
+                <% when 'youtube#video' %>
+                  <div>
+                      <iframe width="640" height="350" frameborder="5" src="https://youtube.com/embed/<%= result.id.videoId %>" allowfullscreen="allowfullscreen"></iframe>
+                  </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>

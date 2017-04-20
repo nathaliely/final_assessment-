@@ -1,5 +1,6 @@
-<% if current_page?(action: 'index') %>
+<% if current_page?(action: 'new') %>
   <%= form_for @item, remote: true do |form| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <%= form.label :title %>
     <%= form.text_field :title %>
     <%= form.label :description  %>
@@ -11,7 +12,9 @@
   <%= form.text_field :title %>
   <%= form.label :description  %>
   <%= form.text_field :description  %>
+  <%= form.file_field :pictures, multiple: true %>
   <%= form.submit :submit %>
 <% end %>
+
 
 <!-- form first when it's index and the other when it's edit because i don't have when i do ajex  -->

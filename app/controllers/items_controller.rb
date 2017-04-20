@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(item_params)
     if @item.save
+      store_images
       @item_json = @item.to_json
       respond_to do |format|
         format.html {redirect_to @item}
@@ -37,6 +38,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      store_images
       redirect_to item_path(@item)
     else
       render 'edit'
@@ -74,4 +76,10 @@ end
 def find_item
   @item = Item.find(params[:id])
 end
+
+def store_images
+  images = params[:item][:pictures]
+  images.each{|image| @item.images.create(image: image)} if images
+end
+
 end
