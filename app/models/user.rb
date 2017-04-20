@@ -4,7 +4,9 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
 
-  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  # validates :email, format: { with: /\A[a-zA-Z]+\z/ }
   has_many :authentications, :dependent => :destroy
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
