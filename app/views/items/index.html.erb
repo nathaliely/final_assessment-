@@ -1,5 +1,34 @@
-<% @items.each do |item| %>
-
-<h2><%= item.title %></h2>
-<p><%= item.description %></p>
-<% end %>
+<% if user_signed_in? %>
+  <% unless @items.empty? %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <%= link_to "New Item", new_item_path, remote: true, id: "new-item-btn" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <div id="render">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3" id="item-container">
+      <% @items.each do |item| %>
+        <div class="index-wrapper">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <p><%= link_to item.title, item_path(item) %></p>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+              <p><%= item.description %></p>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+              <p> Created <%= time_ago_in_words(item.created_at) %> ago</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h2>No Items Yet</h2>
+      <%= link_to "New Item", new_item_path %>
+    <% end %>
+  <% end %>

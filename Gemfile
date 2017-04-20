@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'htmlbeautifier'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -58,13 +58,14 @@ gem 'bcrypt', '~> 3.1.7'
 
 #Omniauth and Omniauth-Facebook gems
 gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
+gem "figaro"
 
 #search
-gem 'ransack'
+gem "scoped_search"
 
 #simpleform
 gem 'simple_form', '~> 3.4'
 
 #boostrap-sass
-gem 'boostrap-sass', '~> 0.0.2'
+gem 'bootstrap-sass', '~> 3.3.6'

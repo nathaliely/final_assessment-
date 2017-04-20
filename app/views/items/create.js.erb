@@ -1,0 +1,41 @@
+x = "<%= j @item_json %>"
+item = JSON.parse(x.replace(/(&quot\;)/g,"\""))
+// because of the format
+
+// Most outer div
+outerDiv = $("<div class='index-wrapper'></div>")
+
+// Row div
+rowDiv = $('<div class="row"></div>')
+
+// Column Div For Link
+colDivLink = $('<div class="col-md-4 col-md-offset-4"></div>')
+pTagLink = $('<p></p>')
+titleLink = $("<a href'items/" + item.id + "'>" + item.title + "</a>")
+titleLinkP = pTagLink.append(titleLink)
+colDivLink.append(titleLinkP)
+
+
+// Column Div For Description
+colDivDescription = $('<div class="col-md-4 col-md-offset-4"></div>')
+pTagDescription = $('<p></p>')
+descriptionP = pTagDescription.text(item.description)
+colDivDescription.append(descriptionP)
+
+// Column Div For Time
+colDivTime = $('<div class="col-md-4 col-md-offset-4"></div>')
+pTagTime = $('<p></p>')
+time = "<%= j time_ago_in_words(@item.created_at) %>"
+pTagTime.text("Created " + time + " ago")
+colDivTime.append(pTagTime)
+
+// Assemble row section
+rowDiv.append(colDivLink)
+rowDiv.append(colDivDescription)
+rowDiv.append(colDivTime)
+
+// Assemble row div
+outerDiv.append(rowDiv)
+
+// Put ontop of all item container
+$('#item-container').prepend(outerDiv)
