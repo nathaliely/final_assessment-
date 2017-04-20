@@ -56,9 +56,10 @@ class ItemsController < ApplicationController
 
 
   def search
-        @Items = Item.search(params[:term], fields: ["item", "date"], mispellings: {below: 5})
-        if @Items.blank?
-          redirect_to listings_path, flash:{danger: "no successful search result"}
+        @items = Item.title(params[:search][:title])
+
+        if @items.blank?
+          redirect_to items_path, flash:{danger: "no successful search result"}
         else
           render :index
         end

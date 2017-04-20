@@ -1,4 +1,15 @@
 <% if user_signed_in? %>
+
+<%= form_for :search, url: search_items_path, method: :get do |f| %>
+ <div class="text-field">
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+ </div>
+   <%= f.submit "Search!" %>
+<% end %>
+
+
+
   <% unless @items.empty? %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center">

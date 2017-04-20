@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def create_from_omniauth
+    byebug
     auth_hash = request.env["omniauth.auth"]
-
     authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) || Authentication.create_with_omniauth(auth_hash)
     if authentication.user
       user = authentication.user
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       @next = user_path(user)
       @notice = "Signed in first time with facebook"
     end
-    sign_in(user)
+    session[:user_id] = user.id
     redirect_to @next, :notice => @notice
   end
 

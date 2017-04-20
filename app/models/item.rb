@@ -5,6 +5,8 @@ class Item < ApplicationRecord
     !completed_at.blank?
   end
 
- scoped_search on: [:item]
+ scope :title, -> (title) { where title: title }
+
+ #scoped_search on: [:items]
 
 end

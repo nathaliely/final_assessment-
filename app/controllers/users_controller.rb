@@ -12,9 +12,10 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
 
-
-
+  def show
+    @user = current_user
   end
 
   private
